@@ -50,7 +50,7 @@ const mostrarPersonajes = (array) => {
 }
 
 const filtrarPersonaje = (nombre) => {
-    const personajesFiltrados = personajes.filter((personaje) => personaje.nombre.trim().toLowerCase().includes(nombre.toLowerCase()))
+    const personajesFiltrados = personajes.filter((personaje) => personaje.name.trim().toLowerCase().includes(nombre.toLowerCase()))
     mostrarPersonajes(personajesFiltrados)
 }
 
