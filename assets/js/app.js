@@ -1,5 +1,6 @@
 const personajes = []
 const divPersonajes = document.querySelector("#tarjetasPersonajes")
+const modalPj = document.querySelector("#modalPersonaje")
 
 
 const listarPersonajes = async () => {
@@ -24,6 +25,29 @@ const detallePersonaje = async (id) => {
     try {
         const res = await fetch(`https://thesimpsonsapi.com/api/characters/${id}`)
         const data = await res.json()
+        modalPj.innerHTML = `
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">${data.name}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="https://cdn.thesimpsonsapi.com/500${data.portrait_path}" class="card-img-top" alt="${data.name}">
+                        <p><strong>Edad y Fecha de Nacimiento:</strong> ${data.age} años - Nacimiento: ${data.birthdate}</p>
+                        <p><strong>Género:</strong> ${data.gender}</p>
+                        <p><strong>Ocupación:</strong> ${data.occupation}</p>
+                        <p><strong>Estado:</strong> ${data.status}</p>
+                        <p><strong>Frase más célebre:</strong> ${data.phrases[0]}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>`
+        // Mostrar el modal
+        const modal = new bootstrap.Modal(modalPj)
+        modal.show()
     } catch (error) {
         console.log(error, 'Error al obtener el detalle del personaje')
     }
@@ -32,7 +56,7 @@ const detallePersonaje = async (id) => {
 const mostrarPersonajes = (array) => {
     divPersonajes.innerHTML = '' // Limpiar el div:row antes de mostrar los personajes. 
     // Esto evita que se dupliquen los personajes cada vez que se ejecuta la función.
-     array.forEach((objeto) => {
+    array.forEach((objeto) => {
         const col = document.createElement("div");
         col.classList.add("col-md-4", "mb-4");
         const card = document.createElement("div");
@@ -59,7 +83,7 @@ const filtrarPersonaje = (nombre) => {
     const personajesFiltrados = personajes.filter((personaje) => personaje.name.trim().toLowerCase().includes(nombre.toLowerCase()))
     if (personajesFiltrados.length === 0) {
         divPersonajes.innerHTML = `<p class="text-center">No se encontraron personajes con el nombre "${nombre}".</p>`
-    }else{
+    } else {
         mostrarPersonajes(personajesFiltrados)
     }
 }
