@@ -34,7 +34,7 @@ const mostrarPersonajes = (array) => {
         const card = document.createElement("div");
         card.classList.add("card", "h-100");
         card.innerHTML = `
-        <img src="${objeto.portrait_path}" class="card-img-top" alt="${objeto.nombre}">
+        <img src="https://cdn.thesimpsonsapi.com/500${objeto.portrait_path}" class="card-img-top" alt="${objeto.name}">
         <div class="card-body">
             <h5 class="card-title">${objeto.name}</h5>
             <p class="card-text">Ocupación: ${objeto.occupation}</p>
