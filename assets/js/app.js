@@ -58,13 +58,17 @@ const mostrarPersonajes = (array) => {
     // Esto evita que se dupliquen los personajes cada vez que se ejecuta la función.
     array.forEach((objeto) => {
         const col = document.createElement("div");
-        col.classList.add("col-md-4", "mb-4");
+        col.classList.add("col-md-4", "mb-4", "mt-4");
         const card = document.createElement("div");
         card.classList.add("card", "h-100");
+        card.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+        card.style.backgroundColor = "#03afffe1"
+        card.style.color = "#ffffff"
+        card.style.borderRadius = "7px";
         card.innerHTML = `
         <img src="https://cdn.thesimpsonsapi.com/500${objeto.portrait_path}" class="card-img-top" alt="${objeto.name}">
         <div class="card-body">
-            <h5 class="card-title">${objeto.name}</h5>
+            <h5 class="card-title" style="background-color: #F4FF03; border-radius: 3px; font-weight: bold; color: #000000dc; font-family: Comic Sans MS; text-align: center">${objeto.name}</h5>
             <p class="card-text">Ocupación: ${objeto.occupation}</p>
             <p class="card-text">Estado: ${objeto.status}</p>
             <button class="btn btn-primary btn-sm" onclick="detallePersonaje(${objeto.id})">
