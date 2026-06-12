@@ -66,7 +66,7 @@ const mostrarPersonajes = (array) => {
         card.style.color = "#ffffff"
         card.style.borderRadius = "7px";
         card.innerHTML = `
-        <img src="https://cdn.thesimpsonsapi.com/500${objeto.portrait_path}" class="card-img-top" alt="${objeto.name}">
+        <img src="https://cdn.thesimpsonsapi.com/500${objeto.portrait_path}" class="card-img-top" alt="${objeto.name}" style="border-radius: 7px 7px 0 0; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);">
         <div class="card-body">
             <h5 class="card-title" style="background-color: #F4FF03; border-radius: 3px; font-weight: bold; color: #000000dc; font-family: Comic Sans MS; text-align: center">${objeto.name}</h5>
             <p class="card-text">Ocupación: ${objeto.occupation}</p>
